@@ -1,6 +1,5 @@
 package com.thoughtworks.capacity.gtb.mvc.api;
 
-import com.thoughtworks.capacity.gtb.mvc.common.ExceptionMessageConstant;
 import com.thoughtworks.capacity.gtb.mvc.domain.User;
 import com.thoughtworks.capacity.gtb.mvc.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +7,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Pattern;
 
 @RestController
 @Validated

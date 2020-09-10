@@ -17,8 +17,10 @@ public class UserExceptionHandle {
     Error error = new Error();
     if (exception instanceof MethodArgumentNotValidException) {
       error.setError(((MethodArgumentNotValidException) exception).getBindingResult().getFieldError().getDefaultMessage());
+      log.error(((MethodArgumentNotValidException) exception).getBindingResult().getFieldError().getDefaultMessage());
     }else {
       error.setError(exception.getMessage());
+      log.error(exception.getMessage());
     }
     return ResponseEntity.badRequest().body(error);
   }

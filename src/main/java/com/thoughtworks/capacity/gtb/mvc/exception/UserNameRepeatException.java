@@ -13,5 +13,8 @@ public class UserNameRepeatException extends RuntimeException {
     this.status = HttpStatus.BAD_REQUEST;
   }
 
-
+  @Override
+  public String getMessage() {
+    return errorMessage;
+  }
 }

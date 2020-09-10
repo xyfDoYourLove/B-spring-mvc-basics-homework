@@ -4,18 +4,16 @@ import com.thoughtworks.capacity.gtb.mvc.common.MockDataBase;
 import com.thoughtworks.capacity.gtb.mvc.domain.User;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 public class UserRepository {
-
-  public List<User> findAll() {
-    return MockDataBase.USER_LIST;
-  }
 
   public void save(User user) {
     MockDataBase.USER_LIST.add(user);
     MockDataBase.USER_MAP.put(user.getUsername(), user);
+  }
+
+  public User findOne(String username) {
+    return MockDataBase.USER_MAP.get(username);
   }
 
   public boolean isRepeat(String userName) {

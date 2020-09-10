@@ -14,4 +14,6 @@ public class ExceptionMessageConstant {
 
   public static final String EMAIL_ILLEGAL = "邮箱地址不合法";
 
+  public static final String USERNAME_PASSWORD_WRONG = "用户名或密码错误";
+
 }

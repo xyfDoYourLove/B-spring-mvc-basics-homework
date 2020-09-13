@@ -8,16 +8,18 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.Objects;
+
 @RestControllerAdvice
 @Slf4j
 public class UserExceptionHandle {
 
   @ExceptionHandler(value = {MethodArgumentNotValidException.class, ParamIllegalException.class})
-  public ResponseEntity<Error> UserValidExceptionHandle(Exception exception) {
+  public ResponseEntity<Error> userValidExceptionHandle(Exception exception) {
     Error error = new Error();
     if (exception instanceof MethodArgumentNotValidException) {
-      error.setError(((MethodArgumentNotValidException) exception).getBindingResult().getFieldError().getDefaultMessage());
-      log.error(((MethodArgumentNotValidException) exception).getBindingResult().getFieldError().getDefaultMessage());
+      error.setError(Objects.requireNonNull(((MethodArgumentNotValidException) exception).getBindingResult().getFieldError()).getDefaultMessage());
+      log.error(Objects.requireNonNull(((MethodArgumentNotValidException) exception).getBindingResult().getFieldError()).getDefaultMessage());
     }else {
       error.setError(exception.getMessage());
       log.error(exception.getMessage());

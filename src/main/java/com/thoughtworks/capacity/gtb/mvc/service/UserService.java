@@ -12,13 +12,13 @@ import java.util.regex.Pattern;
 @Service
 public class UserService {
 
-  UserRepository userRepository;
+  private UserRepository userRepository;
 
   public UserService(UserRepository userRepository) {
     this.userRepository = userRepository;
   }
 
-  public void registerUser(User user) throws ParamIllegalException {
+  public void registerUser(User user) {
     if (userRepository.isRepeat(user.getUsername())) {
       throw new ParamIllegalException(ExceptionMessageConstant.USERNAME_REPEAT);
     }
